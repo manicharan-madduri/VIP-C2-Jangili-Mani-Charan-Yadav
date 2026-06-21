@@ -1,0 +1,222 @@
+/* ==========================================
+   Book a Doctor Design System (Vanilla CSS)
+   ========================================== */
+
+/* Global Colors & Variables (Light Theme by default) */
+:root {
+  --font-family: 'Inter', sans-serif;
+  
+  --primary-color: #0284c7;
+  --primary-light: #38bdf8;
+  --primary-dark: #0369a1;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  
+  --bg-color: #f8fafc;
+  --surface-color: rgba(255, 255, 255, 0.75);
+  --border-color: rgba(226, 232, 240, 0.8);
+  --box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --glass-blur: 12px;
+  
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --transition-speed: 0.3s;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --bg-color: #0b0f19;
+  --surface-color: rgba(17, 24, 39, 0.75);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  
+  --nav-bg: rgba(11, 15, 25, 0.7);
+}
+
+/* Core Settings */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: var(--surface-color);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  border-radius: 16px;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border var(--transition-speed) ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+/* Glassmorphic Navbar */
+.glass-nav {
+  background: var(--nav-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed);
+}
+
+/* Beautiful Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glowing Buttons & Badges */
+.btn-primary-glow {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border: none;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+  transition: all var(--transition-speed) ease;
+  border-radius: 8px;
+}
+
+.btn-primary-glow:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+}
+
+.glow-badge-approved {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+
+.glow-badge-pending {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--warning-color);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.glow-badge-rejected {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Page Transitions */
+.page-fade-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spinning/Loading Page Animations */
+.spinner-pulse {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Dark mode toggler styles */
+.theme-toggle-btn {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Hero Section Graphics */
+.hero-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-blur {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.15) 0%, rgba(56, 189, 248, 0.05) 50%, rgba(255,255,255,0) 70%);
+  z-index: -1;
+  filter: blur(50px);
+}
+
+/* Form Styles */
+.form-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 8px;
+}
+
+.form-glass:focus {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(2, 132, 199, 0.25);
+}
+
+/* custom table layout for glass style */
+.table-glass {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--text-main);
+  --bs-table-border-color: var(--border-color);
+}
+
+.table-glass th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
